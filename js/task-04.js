@@ -1,20 +1,19 @@
-let counterValue = 0;
+function getRandomHexColor() {
+  return `#${Math.floor(Math.random() * 16777215)
+    .toString(16)
+    .padStart(6, 0)}`;
+}
 
-const decrementBtn = document.querySelector('button[data-action="decrement"]');
-
-const incrementBtn = document.querySelector('button[data-action="increment"]');
-
-const currentValueView = document.querySelector('#value');
-
-const incrementCounter = () => {
-  counterValue++;
-  currentValueView.textContent = counterValue;
+const elements = {
+  body: document.querySelector('body'),
+  changeColorBtn: document.querySelector('.change-color'),
+  spanColor: document.querySelector('.color'),
 };
 
-const decrementCounter = () => {
-  counterValue--;
-  currentValueView.textContent = counterValue;
-};
+function handlerBackgroundColor() {
+  const color = getRandomHexColor();
+  elements.body.style.backgroundColor = color;
+  elements.spanColor.textContent = color;
+}
 
-decrementBtn.addEventListener('click', decrementCounter);
-incrementBtn.addEventListener('click', incrementCounter);
+elements.changeColorBtn.addEventListener('click', handlerBackgroundColor);

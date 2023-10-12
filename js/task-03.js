@@ -1,26 +1,18 @@
-const images = [
-  {
-    url: 'https://images.pexels.com/photos/140134/pexels-photo-140134.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
-    alt: 'White and Black Long Fur Cat',
-  },
-  {
-    url: 'https://images.pexels.com/photos/213399/pexels-photo-213399.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
-    alt: 'Orange and White Koi Fish Near Yellow Koi Fish',
-  },
-  {
-    url: 'https://images.pexels.com/photos/219943/pexels-photo-219943.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
-    alt: 'Group of Horses Running',
-  },
-];
+const loginForm = document.querySelector('.login-form');
 
-const imageList = document.querySelector('.gallery');
+function handlerCheckForm(e) {
+  e.preventDefault();
+  const target = e.currentTarget;
+  const email = target.email.value;
+  const password = target.password.value;
 
-function createMarkupImages(arr) {
-  return arr
-    .map(
-      ({ url, alt }) => `<li><img src="${url}" alt="${alt}" width="750"></li>`
-    )
-    .reduce((acc, el) => (acc += el));
+  if (email && password) {
+    const user = { email, password };
+    console.log(user);
+    target.reset();
+  } else {
+    alert('You must feel both email and password!');
+  }
 }
 
-imageList.insertAdjacentHTML('afterbegin', createMarkupImages(images));
+loginForm.addEventListener('submit', handlerCheckForm);

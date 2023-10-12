@@ -1,21 +1,10 @@
-const ingredients = [
-  'Potatoes',
-  'Mushrooms',
-  'Garlic',
-  'Tomatos',
-  'Herbs',
-  'Condiments',
-];
+const input = document.querySelector('#font-size-control');
+const text = document.querySelector('#text');
 
-const ingredientList = document.querySelector('#ingredients');
+text.style.fontSize = input.value + 'px';
 
-function createMarkupIngredients(arr) {
-  return arr.map(el => {
-    const li = document.createElement('li');
-    li.textContent = el;
-    li.classList.add('item');
-    return li;
-  });
+function handlerFontSize(e) {
+  text.style.fontSize = e.currentTarget.value + 'px';
 }
 
-ingredientList.append(...createMarkupIngredients(ingredients));
+input.addEventListener('input', handlerFontSize);
